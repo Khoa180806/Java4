@@ -24,5 +24,5 @@ public class User {
     @Column(name = "Email")
     private String email;
     @Column(name = "Admin")
-    private Boolean admin;
+    private Boolean admin = false;
 }
