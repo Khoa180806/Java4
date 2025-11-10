@@ -45,16 +45,12 @@ public class UserDAOServlet extends HttpServlet {
                         message = "Create: " + form.getId();
                         user.create(form);
                 } else if (path.contains("update")) {
-                        // First get the existing user
                         User existingUser = user.findById(form.getId());
                         if (existingUser != null) {
-                                // Update the existing user's fields
                                 existingUser.setFullname(form.getFullname());
                                 existingUser.setEmail(form.getEmail());
                                 existingUser.setPassword(form.getPassword());
                                 existingUser.setAdmin(form.getAdmin());
-
-                                // Now update
                                 user.update(existingUser);
                                 message = "Update: " + form.getId();
                         }

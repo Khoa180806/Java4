@@ -5,7 +5,6 @@ import com.java4.utils.XJPA;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAOImpl implements UserDAO{
