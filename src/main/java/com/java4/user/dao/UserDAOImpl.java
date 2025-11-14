@@ -1,6 +1,6 @@
-package com.java4.dao;
+package com.java4.user.dao;
 
-import com.java4.entity.User;
+import com.java4.user.entity.User;
 import com.java4.utils.XJPA;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
