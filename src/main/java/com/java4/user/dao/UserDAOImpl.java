@@ -28,6 +28,17 @@ public class UserDAOImpl implements UserDAO{
     }
 
     @Override
+    public User findByIdOrEmail(String username) {
+        try {
+            TypedQuery<User> query = em.createNamedQuery("User.findByIdOrEmail", User.class);
+            query.setParameter("username", username);
+            return query.getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    @Override
     public void create(User user){
         try {
             em.getTransaction().begin();

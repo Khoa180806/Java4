@@ -28,6 +28,13 @@ public class VideoDAOImpl implements VideoDAO {
     }
 
     @Override
+    public List<Video> findByTitleContaining(String keyword) {
+        TypedQuery<Video> query = em.createNamedQuery("Video.findByTitleContaining", Video.class);
+        query.setParameter("keyword", "%" + keyword + "%");
+        return query.getResultList();
+    }
+
+    @Override
     public void create(Video video) {
         try {
             em.getTransaction().begin();

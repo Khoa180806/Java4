@@ -1,5 +1,6 @@
 package com.java4.share.dao;
 
+import com.java4.share.dto.VideoShareReport;
 import com.java4.share.entity.Share;
 import com.java4.utils.XJPA;
 import jakarta.persistence.EntityManager;
@@ -25,6 +26,12 @@ public class ShareDAOImpl implements ShareDAO {
     @Override
     public Share findById(Integer id) {
         return em.find(Share.class, id);
+    }
+
+    @Override
+    public List<VideoShareReport> getVideoShareReport() {
+        TypedQuery<VideoShareReport> query = em.createNamedQuery("Share.getVideoShareReport", VideoShareReport.class);
+        return query.getResultList();
     }
 
     @Override

@@ -4,6 +4,8 @@ import com.java4.favorite.entity.Favorite;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -17,6 +19,11 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "Users")
+@NamedQueries({
+    @NamedQuery(name = "User.findById", query = "SELECT u FROM User u WHERE u.id = :id"),
+    @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email = :email"),
+    @NamedQuery(name = "User.findByIdOrEmail", query = "SELECT u FROM User u WHERE u.id = :username OR u.email = :username")
+})
 public class User {
     @Id
     @Column(name = "Id")
