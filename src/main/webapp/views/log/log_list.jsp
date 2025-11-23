@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>Video Share Report</title>
+    <title>Access Logs</title>
     <style>
         * {
             margin: 0;
@@ -30,6 +30,27 @@
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
         }
 
+        .visitor-counter {
+            background-color: #fff3cd;
+            padding: 10px 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            border: 1px solid #ffc107;
+            text-align: center;
+            color: #856404;
+            font-weight: bold;
+        }
+
+        .user-info-header {
+            background-color: #e8f5e9;
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            border: 1px solid #4CAF50;
+            color: #2e7d32;
+            font-weight: bold;
+        }
+
         h1 {
             text-align: center;
             color: #333;
@@ -46,6 +67,57 @@
             color: #666;
             margin-bottom: 30px;
             font-size: 16px;
+        }
+
+        .filter-box {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .filter-form {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .filter-form input {
+            flex: 1;
+            padding: 12px 20px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .filter-form input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.2);
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
         }
 
         .stats-card {
@@ -108,35 +180,35 @@
 
         table tbody tr:hover {
             background-color: #f8f9fa;
-            transform: scale(1.005);
+            transform: scale(1.002);
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
-        .video-title {
+        .log-id {
             font-weight: bold;
-            color: #333;
-            font-size: 15px;
+            color: #667eea;
+            font-size: 16px;
         }
 
-        .share-count {
+        .log-url {
+            color: #333;
+            font-size: 14px;
+            word-break: break-all;
+        }
+
+        .log-username {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
+            padding: 6px 12px;
+            border-radius: 15px;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 14px;
             display: inline-block;
-            min-width: 50px;
         }
 
-        .date-info {
+        .log-time {
             color: #555;
             font-size: 14px;
-        }
-
-        .date-icon {
-            margin-right: 5px;
-            color: #667eea;
         }
 
         .no-data {
@@ -155,12 +227,17 @@
             margin-bottom: 10px;
         }
 
-        .no-data p {
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
             font-size: 16px;
         }
 
-        .table-wrapper {
-            overflow-x: auto;
+        .back-link:hover {
+            text-decoration: underline;
         }
 
         @media (max-width: 768px) {
@@ -178,45 +255,10 @@
                 font-size: 13px;
             }
         }
-
-        .user-info-header {
-            background-color: #e8f5e9;
-            padding: 12px 20px;
-            margin-bottom: 20px;
-            border-radius: 6px;
-            border: 1px solid #4CAF50;
-            color: #2e7d32;
-            font-weight: bold;
-        }
-        .visitor-counter {
-            background-color: #fff3cd;
-            padding: 10px 15px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-            border: 1px solid #ffc107;
-            text-align: center;
-            color: #856404;
-            font-weight: bold;
-        }
-        .back-home {
-            display: inline-block;
-            margin-bottom: 15px;
-            color: #667eea;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-        .back-home:hover {
-            color: #764ba2;
-            transform: translateX(-5px);
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="${pageContext.request.contextPath}/" class="back-home">← Về trang chủ</a>
-
         <div class="visitor-counter">
             👥 Số lượt khách viếng thăm: ${applicationScope.visitors}
         </div>
@@ -227,46 +269,55 @@
             </div>
         </c:if>
 
-        <h1>
-            <span>📊</span> Video Share Report
-        </h1>
-        <p class="subtitle">Thống kê chia sẻ video tổng hợp</p>
+        <a href="${pageContext.request.contextPath}/" class="back-link">← Về trang chủ</a>
 
-        <c:if test="${not empty reports}">
+        <h1>
+            <span>📋</span> Access Logs
+        </h1>
+        <p class="subtitle">Lịch sử truy cập website của người dùng đã đăng nhập</p>
+
+        <div class="filter-box">
+            <form method="get" action="${pageContext.request.contextPath}/logs" class="filter-form">
+                <input type="text" 
+                       name="username" 
+                       placeholder="Lọc theo username..." 
+                       value="${filterUsername}"/>
+                <button type="submit" class="btn">🔍 Lọc</button>
+                <a href="${pageContext.request.contextPath}/logs" class="btn btn-secondary">🔄 Tất cả</a>
+            </form>
+        </div>
+
+        <c:if test="${not empty logs}">
             <div class="stats-card">
-                <h2>${reports.size()}</h2>
-                <p>Total Videos Shared</p>
+                <h2>${logs.size()}</h2>
+                <p>Tổng số lượt truy cập</p>
             </div>
 
             <div class="table-wrapper">
                 <table>
                     <thead>
                         <tr>
-                            <th>Tiêu đề Video</th>
-                            <th class="text-center">Số lượt chia sẻ</th>
-                            <th class="text-center">Ngày chia sẻ đầu tiên</th>
-                            <th class="text-center">Ngày chia sẻ cuối cùng</th>
+                            <th class="text-center">ID</th>
+                            <th>URL</th>
+                            <th class="text-center">Username</th>
+                            <th class="text-center">Thời gian</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="report" items="${reports}">
+                        <c:forEach var="log" items="${logs}">
                             <tr>
-                                <td class="video-title">${report.videoTitle}</td>
                                 <td class="text-center">
-                                    <span class="share-count">
-                                        ${report.shareCount}
-                                    </span>
+                                    <span class="log-id">#${log.id}</span>
+                                </td>
+                                <td>
+                                    <div class="log-url">${log.url}</div>
                                 </td>
                                 <td class="text-center">
-                                    <span class="date-info">
-                                        <span class="date-icon">📅</span>
-                                        <fmt:formatDate value="${report.firstShareDate}" pattern="dd/MM/yyyy HH:mm" />
-                                    </span>
+                                    <span class="log-username">${log.username}</span>
                                 </td>
                                 <td class="text-center">
-                                    <span class="date-info">
-                                        <span class="date-icon">📅</span>
-                                        <fmt:formatDate value="${report.lastShareDate}" pattern="dd/MM/yyyy HH:mm" />
+                                    <span class="log-time">
+                                        <fmt:formatDate value="${log.time}" pattern="dd/MM/yyyy HH:mm:ss" />
                                     </span>
                                 </td>
                             </tr>
@@ -276,11 +327,11 @@
             </div>
         </c:if>
 
-        <c:if test="${empty reports}">
+        <c:if test="${empty logs}">
             <div class="no-data">
                 <div class="no-data-icon">📭</div>
-                <h2>No Share Data Available</h2>
-                <p>There are currently no video shares to display.</p>
+                <h2>Chưa có dữ liệu log</h2>
+                <p>Hiện tại chưa có lượt truy cập nào được ghi nhận</p>
             </div>
         </c:if>
     </div>

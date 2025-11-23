@@ -148,47 +148,78 @@
         .logout-btn:hover {
             background-color: #da190b;
         }
+
+        .visitor-counter {
+            background-color: #fff3cd;
+            padding: 10px 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            border: 1px solid #ffc107;
+            text-align: center;
+            color: #856404;
+            font-weight: bold;
+        }
+
+        .back-home {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .back-home:hover {
+            color: #764ba2;
+            transform: translateX(-5px);
+        }
     </style>
 </head>
 <body>
     <div class="login-container">
+        <a href="${pageContext.request.contextPath}/" class="back-home">← Về trang chủ</a>
+        
         <h2>🔐 User Login</h2>
+
+        <div class="visitor-counter">
+            👥 Số lượt khách viếng thăm: ${applicationScope.visitors}
+        </div>
+
+        <c:if test="${!empty sessionScope.user}">
+            <div class="user-info">
+                <p><strong>Đã đăng nhập:</strong> ${sessionScope.user.fullname}</p>
+                <p><strong>User ID:</strong> ${sessionScope.user.id}</p>
+                <p><strong>Email:</strong> ${sessionScope.user.email}</p>
+                <p><strong>Role:</strong> ${sessionScope.user.admin ? 'Admin' : 'User'}</p>
+                <a href="${pageContext.request.contextPath}/user/logout" class="logout-btn">Đăng xuất</a>
+            </div>
+        </c:if>
 
         <c:if test="${not empty message}">
             <div class="message ${messageType}">${message}</div>
         </c:if>
 
-        <c:if test="${not empty user}">
-            <div class="user-info">
-                <p><strong>User ID:</strong> ${user.id}</p>
-                <p><strong>Fullname:</strong> ${user.fullname}</p>
-                <p><strong>Email:</strong> ${user.email}</p>
-                <p><strong>Role:</strong> ${user.admin ? 'Admin' : 'User'}</p>
-            </div>
+        <c:if test="${empty sessionScope.user}">
+            <form method="post" action="${pageContext.request.contextPath}/user/login">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" 
+                           placeholder="Nhập username" 
+                           value="${username}" 
+                           required />
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" 
+                           placeholder="Nhập password" 
+                           required />
+                </div>
+
+                <button type="submit" class="btn-login">Đăng nhập</button>
+            </form>
         </c:if>
-
-        <form method="post" action="${pageContext.request.contextPath}/user/login">
-            <div class="form-group">
-                <label for="username">Username or Email</label>
-                <input type="text" id="username" name="username" 
-                       placeholder="Enter your username or email" 
-                       value="${username}" 
-                       required />
-            </div>
-
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" 
-                       placeholder="Enter your password" 
-                       required />
-            </div>
-
-            <button type="submit" class="btn-login">Login</button>
-
-            <p class="helper-text">
-                You can login with your <strong>Username (ID)</strong> or <strong>Email</strong>
-            </p>
-        </form>
     </div>
 </body>
 </html>

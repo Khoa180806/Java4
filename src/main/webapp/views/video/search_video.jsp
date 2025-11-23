@@ -189,10 +189,55 @@
             color: #e74c3c;
             margin-right: 5px;
         }
+
+        .user-info-header {
+            background-color: #e8f5e9;
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            border: 1px solid #4CAF50;
+            color: #2e7d32;
+            font-weight: bold;
+        }
+        .visitor-counter {
+            background-color: #fff3cd;
+            padding: 10px 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            border: 1px solid #ffc107;
+            text-align: center;
+            color: #856404;
+            font-weight: bold;
+        }
+        .back-home {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        .back-home:hover {
+            color: #764ba2;
+            transform: translateX(-5px);
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <a href="${pageContext.request.contextPath}/" class="back-home">← Về trang chủ</a>
+
+        <div class="visitor-counter">
+            👥 Số lượt khách viếng thăm: ${applicationScope.visitors}
+        </div>
+
+        <c:if test="${!empty sessionScope.user}">
+            <div class="user-info-header">
+                Xin chào: ${sessionScope.user.fullname}
+            </div>
+        </c:if>
+
         <h1>
             <span>🔍</span> Search Videos
         </h1>
