@@ -22,23 +22,32 @@ public class UserLoginServlet extends HttpServlet {
     
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // Lấy thông tin đăng nhập từ form
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         
+        // Kiểm tra thông tin đăng nhập
         UserDAO userDAO = new UserDAOImpl();
         User user = userDAO.findById(username);
         
+        // Xử lý kết quả đăng nhập
         if (user == null) {
+            // Trường hợp không tìm thấy username
             req.setAttribute("message", "Sai username!");
             req.setAttribute("messageType", "error");
             req.setAttribute("username", username);
         } else if (!user.getPassword().equals(password)) {
+            // Trường hợp sai mật khẩu
             req.setAttribute("message", "Sai password!");
             req.setAttribute("messageType", "error");
             req.setAttribute("username", username);
         } else {
+            // Đăng nhập thành công
+            // Lưu thông tin người dùng vào session
             HttpSession session = req.getSession();
             session.setAttribute("user", user);
+            
+            // Thiết lập thông báo thành công
             req.setAttribute("message", "Đăng nhập thành công! Xin chào " + user.getFullname());
             req.setAttribute("messageType", "success");
         }
