@@ -199,6 +199,12 @@
         <c:if test="${not empty message}">
             <div class="message ${messageType}">${message}</div>
         </c:if>
+        
+        <c:if test="${not empty sessionScope.message}">
+            <div class="message error">${sessionScope.message}</div>
+            <c:set var="temp" value="${sessionScope.message}" scope="request"/>
+            <c:remove var="message" scope="session"/>
+        </c:if>
 
         <c:if test="${empty sessionScope.user}">
             <form method="post" action="${pageContext.request.contextPath}/user/login">

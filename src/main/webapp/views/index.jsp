@@ -232,6 +232,24 @@
                     <h3>Quản lý User (CRUD)</h3>
                     <p>Thêm, sửa, xóa và xem danh sách người dùng. Quản lý thông tin cá nhân và quyền Admin.</p>
                 </a>
+
+                <a href="${pageContext.request.contextPath}/account/sign-up" class="feature-card">
+                    <span class="feature-icon">📝</span>
+                    <h3>Đăng ký tài khoản</h3>
+                    <p>Tạo tài khoản mới cho người dùng. Nhập thông tin cá nhân và mật khẩu.</p>
+                </a>
+
+                <a href="${pageContext.request.contextPath}/account/change-password" class="feature-card">
+                    <span class="feature-icon">🔑</span>
+                    <h3>Đổi mật khẩu</h3>
+                    <p>Thay đổi mật khẩu hiện tại. Bảo mật tài khoản của bạn.</p>
+                </a>
+
+                <a href="${pageContext.request.contextPath}/account/edit-profile" class="feature-card">
+                    <span class="feature-icon">✏️</span>
+                    <h3>Chỉnh sửa hồ sơ</h3>
+                    <p>Cập nhật thông tin cá nhân như tên, email và các thông tin khác.</p>
+                </a>
             </div>
         </div>
 
@@ -243,6 +261,30 @@
                     <span class="feature-icon">🔍</span>
                     <h3>Tìm kiếm Video</h3>
                     <p>Tìm kiếm video theo từ khóa. Xem số lượt thích và trạng thái của từng video.</p>
+                </a>
+
+                <a href="${pageContext.request.contextPath}/video/list" class="feature-card">
+                    <span class="feature-icon">📋</span>
+                    <h3>Danh sách Video</h3>
+                    <p>Xem tất cả video có sẵn trong hệ thống. Duyệt qua các video phổ biến.</p>
+                </a>
+
+                <a href="${pageContext.request.contextPath}/video/detail/1" class="feature-card">
+                    <span class="feature-icon">🎥</span>
+                    <h3>Chi tiết Video</h3>
+                    <p>Xem thông tin chi tiết của video. Bao gồm mô tả, lượt xem và bình luận.</p>
+                </a>
+
+                <a href="${pageContext.request.contextPath}/video/like/1" class="feature-card">
+                    <span class="feature-icon">👍</span>
+                    <h3>Thích Video</h3>
+                    <p>Bày tỏ sự yêu thích với video. Thêm video vào danh sách yêu thích.</p>
+                </a>
+
+                <a href="${pageContext.request.contextPath}/video/share/1" class="feature-card">
+                    <span class="feature-icon">📤</span>
+                    <h3>Chia sẻ Video</h3>
+                    <p>Chia sẻ video với bạn bè qua email hoặc mạng xã hội.</p>
                 </a>
             </div>
         </div>
@@ -285,6 +327,48 @@
                     <span class="feature-icon">🔍</span>
                     <h3>Filter Demo</h3>
                     <p>Demo hoạt động của Filter1 và Filter2. Kiểm tra thứ tự thực thi của các filter.</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Testing Section -->
+        <div class="category">
+            <h2 class="category-title">🧪 Kiểm thử & Demo</h2>
+            <div class="features-grid">
+                <a href="${pageContext.request.contextPath}/test/login-redirect" class="feature-card">
+                    <span class="feature-icon">🔐</span>
+                    <h3>Test Login Redirect</h3>
+                    <p>Kiểm tra chức năng đăng nhập và tự động quay lại trang được yêu cầu. Test AuthFilter hoạt động.</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Admin Section -->
+        <div class="category">
+            <h2 class="category-title">🛡️ Quản trị hệ thống</h2>
+            <div class="features-grid">
+                <a href="${pageContext.request.contextPath}/admin/video" class="feature-card">
+                    <span class="feature-icon">🎬</span>
+                    <h3>Quản trị Video</h3>
+                    <p>Quản lý tất cả video trong hệ thống. Duyệt, chỉnh sửa hoặc xóa video.</p>
+                </a>
+
+                <a href="${pageContext.request.contextPath}/admin/user" class="feature-card">
+                    <span class="feature-icon">👤</span>
+                    <h3>Quản trị User</h3>
+                    <p>Quản lý người dùng, phân quyền và xử lý tài khoản vi phạm.</p>
+                </a>
+
+                <a href="${pageContext.request.contextPath}/admin/like" class="feature-card">
+                    <span class="feature-icon">❤️</span>
+                    <h3>Quản trị Like</h3>
+                    <p>Xem và quản lý các lượt thích. Thống kê video được yêu thích nhiều nhất.</p>
+                </a>
+
+                <a href="${pageContext.request.contextPath}/admin/share" class="feature-card">
+                    <span class="feature-icon">📤</span>
+                    <h3>Quản trị Share</h3>
+                    <p>Quản lý các lượt chia sẻ video. Xem thống kê và báo cáo chi tiết.</p>
                 </a>
             </div>
         </div>

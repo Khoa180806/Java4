@@ -47,6 +47,15 @@ public class UserLoginServlet extends HttpServlet {
             HttpSession session = req.getSession();
             session.setAttribute("user", user);
             
+            // Kiểm tra nếu có URL trước đó cần redirect
+            String previousUrl = (String) session.getAttribute("previousUrl");
+            if (previousUrl != null) {
+                session.removeAttribute("previousUrl");
+                session.removeAttribute("message");
+                resp.sendRedirect(previousUrl);
+                return;
+            }
+            
             // Thiết lập thông báo thành công
             req.setAttribute("message", "Đăng nhập thành công! Xin chào " + user.getFullname());
             req.setAttribute("messageType", "success");
