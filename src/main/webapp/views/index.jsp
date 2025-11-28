@@ -340,6 +340,30 @@
                     <h3>Test Login Redirect</h3>
                     <p>Kiểm tra chức năng đăng nhập và tự động quay lại trang được yêu cầu. Test AuthFilter hoạt động.</p>
                 </a>
+
+                <a href="${pageContext.request.contextPath}/ajax-employee" class="feature-card">
+                    <span class="feature-icon">⚡</span>
+                    <h3>AJAX Employee Demo</h3>
+                    <p>Demo sử dụng Fetch API để gọi servlet và nhận dữ liệu JSON. Xem kết quả trong Console.</p>
+                </a>
+
+                <a href="${pageContext.request.contextPath}/ajax-upload" class="feature-card">
+                    <span class="feature-icon">📤</span>
+                    <h3>AJAX File Upload Demo</h3>
+                    <p>Demo upload file với AJAX và Fetch API. Servlet trả về thông tin file dưới dạng JSON.</p>
+                </a>
+
+                <a href="${pageContext.request.contextPath}/rest-employee" class="feature-card">
+                    <span class="feature-icon">🔌</span>
+                    <h3>RESTful API - Employee</h3>
+                    <p>Demo RESTful Web API với CRUD operations: GET, POST, PUT, DELETE. Test tất cả endpoint.</p>
+                </a>
+
+                <a href="${pageContext.request.contextPath}/employee-management" class="feature-card">
+                    <span class="feature-icon">👥</span>
+                    <h3>Quản lý Nhân viên</h3>
+                    <p>Trang web quản lý nhân viên với form, CRUD buttons và bảng hiển thị. Sử dụng Fetch API.</p>
+                </a>
             </div>
         </div>
 
