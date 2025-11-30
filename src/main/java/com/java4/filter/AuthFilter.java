@@ -1,6 +1,6 @@
 package com.java4.filter;
 
-import com.java4.user.entity.User;
+import com.java4.entity.User;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;

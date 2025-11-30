@@ -1,9 +1,9 @@
 package com.java4.filter;
 
-import com.java4.log.dao.LogDAO;
-import com.java4.log.dao.LogDAOImpl;
-import com.java4.log.entity.Log;
-import com.java4.user.entity.User;
+import com.java4.dao.LogDAO;
+import com.java4.dao.LogDAOImpl;
+import com.java4.entity.Log;
+import com.java4.entity.User;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
