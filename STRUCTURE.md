@@ -113,20 +113,36 @@ webapp/
 ├── WEB-INF/
 │   └── web.xml
 └── views/
-    ├── ajax-employee.jsp
-    ├── ajax-upload.jsp
-    ├── employee-management.jsp
     ├── index.jsp
-    ├── page.jsp
-    ├── rest-employee.jsp
-    ├── error/
-    ├── favorite/
-    ├── filter/
-    ├── log/
-    ├── share/
-    ├── test/
-    ├── user/
-    └── video/
+    ├── ajax/           (4 JSP files)
+    │   ├── ajax-employee.jsp
+    │   ├── ajax-upload.jsp
+    │   ├── employee-management.jsp
+    │   └── rest-employee.jsp
+    ├── demo/           (2 JSP files)
+    │   ├── login-redirect-test.jsp
+    │   └── page.jsp
+    ├── error/          (1 JSP file)
+    │   └── 403.jsp
+    ├── favorite/       (2 JSP files)
+    │   ├── favorite_all.jsp
+    │   └── favorite_list.jsp
+    ├── filter/         (1 JSP file)
+    │   └── filter_test.jsp
+    ├── log/            (1 JSP file)
+    │   └── log_list.jsp
+    ├── share/          (1 JSP file)
+    │   └── share_report.jsp
+    ├── user/           (2 JSP files)
+    │   ├── login.jsp
+    │   └── user_crud.jsp
+    └── video/          (1 JSP file)
+        └── search_video.jsp
 ```
 
-Thư mục `webapp/web` đã được xóa vì trùng lặp.
+### Thay đổi Views:
+- **Trước**: Các JSP liên quan AJAX nằm rời ở root
+- **Sau**: Tất cả AJAX JSPs trong thư mục `ajax/`
+- **Trước**: `test/` và `page.jsp` nằm rời
+- **Sau**: Gộp vào thư mục `demo/`
+- Thư mục `webapp/web` đã được xóa vì trùng lặp
