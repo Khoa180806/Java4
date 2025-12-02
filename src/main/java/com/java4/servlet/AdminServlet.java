@@ -31,7 +31,7 @@ public class AdminServlet extends HttpServlet {
         }
         
         req.setAttribute("message", message);
-        req.getRequestDispatcher("/views/page.jsp").forward(req, resp);
+        req.getRequestDispatcher("/views/demo/page.jsp").forward(req, resp);
     }
 }
 

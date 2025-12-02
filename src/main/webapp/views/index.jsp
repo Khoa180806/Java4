@@ -364,6 +364,18 @@
                     <h3>Quản lý Nhân viên</h3>
                     <p>Trang web quản lý nhân viên với form, CRUD buttons và bảng hiển thị. Sử dụng Fetch API.</p>
                 </a>
+
+                <a href="${pageContext.request.contextPath}/views/websocket-client.jsp" class="feature-card">
+                    <span class="feature-icon">💬</span>
+                    <h3>WebSocket Chat (Text)</h3>
+                    <p>Demo WebSocket chat đơn giản với text message. Kết nối nhiều clients để chat với nhau.</p>
+                </a>
+
+                <a href="${pageContext.request.contextPath}/views/chat-room.jsp" class="feature-card">
+                    <span class="feature-icon">🗨️</span>
+                    <h3>Chat Room (JSON Message)</h3>
+                    <p>Ứng dụng chat với cấu trúc Message JSON {text, type, count, sender}. Hỗ trợ Encoder/Decoder và hiển thị type của tin nhắn.</p>
+                </a>
             </div>
         </div>
 

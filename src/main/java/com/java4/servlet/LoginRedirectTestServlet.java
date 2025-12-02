@@ -12,7 +12,7 @@ import java.io.IOException;
 public class LoginRedirectTestServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/views/test/login-redirect-test.jsp").forward(req, resp);
+        req.getRequestDispatcher("/views/demo/login-redirect-test.jsp").forward(req, resp);
     }
 }
 

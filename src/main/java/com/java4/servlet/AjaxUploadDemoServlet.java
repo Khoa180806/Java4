@@ -13,7 +13,7 @@ public class AjaxUploadDemoServlet extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/views/ajax-upload.jsp").forward(req, resp);
+        req.getRequestDispatcher("/views/ajax/ajax-upload.jsp").forward(req, resp);
     }
 }
 

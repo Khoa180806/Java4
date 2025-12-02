@@ -13,7 +13,7 @@ public class AjaxEmployeeDemoServlet extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/views/ajax-employee.jsp").forward(req, resp);
+        req.getRequestDispatcher("/views/ajax/ajax-employee.jsp").forward(req, resp);
     }
 }
 
